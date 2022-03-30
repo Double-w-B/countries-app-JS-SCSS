@@ -1,5 +1,5 @@
 export const currency = {
-  " ": " ",
+  "": "",
   STN: "São Tomé and Príncipe dobra",
   XAG: "Silver (troy ounce)",
   XAU: "Gold (troy ounce)",
@@ -339,3 +339,18 @@ export const currency = {
 
 // const cur = Object.keys(currency).map(curr => curr).join(" ");
 // console.log(cur);
+
+// const showAllCurrencies = Object.keys(currency).sort( (a,b)=>{
+//   if (a<b) return -1
+//   if (a>b) return 1
+//   return 0;
+
+//   // a<b && -1 
+//   //  a>b ? 1 : 0
+// })
+//   .map((curr) => {
+//     return `<option value="${curr}">${curr}</option>`;
+//   })
+//   .join("");
+
+//   console.log(showAllCurrencies);

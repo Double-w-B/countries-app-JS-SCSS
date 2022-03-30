@@ -6,13 +6,39 @@
     left: 4rem;
     border-radius: 0.5rem;
     // border-bottom-right-radius: 8rem;
-    background-color: #95d5b2;
     z-index: 0;
 
+    &.about {
+        & p {
+            font-size: 1.8rem;
+        }
+
+        & p:last-child {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+
+            & a {
+                text-decoration: none;
+                color: #ED2939;
+            }
+        }
+    }
 
     & p {
         font-size: 2rem;
-        color: #1b4332;
+        color: #F4FDFF;
+        font-family: 'Oswald',
+            sans-serif;
+        // font-family: 'Playfair Display',
+        // serif;
+    }
 
+    & p:last-child {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        color: #F4FDFF;
+        font-family: 'Lato',
+            sans-serif;
+        font-weight: 300;
     }
 }

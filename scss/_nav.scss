@@ -1,0 +1,39 @@
+.logo {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    // margin-left: 2rem;
+
+    & img {
+        min-width: 65px;
+        width: 80%;
+        height: 80%;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
+
+}
+
+.nav {
+    // width: 10%;
+    height: 100%;
+    // background-color: tomato;
+    display: grid;
+    place-items: center;
+
+
+    & p {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #4E637E;
+
+        &:active {
+            transform: scale(0.7);
+        }
+    }
+
+
+}

@@ -1,11 +1,9 @@
 import homePage from "./homePage.js";
 import fetchCountries from "./fetch/fetchCountries.js";
-import { displayMatches } from "./displayMatches.js";
-import { fetchImages } from "./fetch/fetchImages.js";
 import showAllCountries from "./showAllCountries.js";
-import selectedCountry from "./selectedCountry.js";
 import homePageFunc from "./homePageFunc.js";
 import singleCountryHandle from "./singleCountryHandle.js";
+import aboutInfo from "./about.js";
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -17,16 +15,20 @@ const mainContainer = $("main");
 let countriesData = [];
 
 homePage();
+aboutInfo();
 
-const countriesCont = $(".countries--container");
-const allCountries = $(".countries--all");
+const countriesCont = $(".countries__container");
+const allCountries = $(".countries__all");
 const inputSearch = $("#search");
 fetchCountries();
 
 homePageFunc();
 
 logo.addEventListener("click", () => {
+  header.classList.remove("opacity");
+  body.removeAttribute("style");
   homePage();
+  aboutInfo();
   homePageFunc();
   showAllCountries();
 });

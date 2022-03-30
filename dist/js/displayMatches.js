@@ -1,4 +1,5 @@
 import { countriesData, singleCountryHandle } from "./main.js";
+
 const $ = document.querySelector.bind(document);
 
 const findMatches = (wordToMatch, countriesData) => {
@@ -9,7 +10,7 @@ const findMatches = (wordToMatch, countriesData) => {
 };
 
 export const displayMatches = () => {
-  const allCountries = $(".countries--all");
+  const allCountries = $(".countries__all");
   const inputSearch = $("#search");
   const [data] = countriesData;
 
@@ -21,11 +22,15 @@ export const displayMatches = () => {
         name: { common },
       } = country;
       return `
-     <div class="country--single">
-            <div class="country--flag">
-              <img src="${png}" alt="" />
+     <div class="countries__single">
+            <div class="countries__single-flag">
+              <img src="${png}" alt="flag" />
             </div>
-            <p>${common}</p>
+              <p ${
+                common.length > 28
+                  ? `style="font-size: 0.9rem;"`
+                  : common.length > 35 && `style="font-size: 0.8rem;"`
+              }>${common}</p>
           </div>
     `;
     })

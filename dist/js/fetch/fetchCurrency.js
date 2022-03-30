@@ -13,11 +13,14 @@ export const fetchCurrency = async (f, t, a) => {
     const data = await response.json();
     const { rates } = data;
     const localCurr = Object.values(rates)[0];
-    const { currency_name: name, rate_for_amount: result } = localCurr;
-    const results = `${a}${f} = ${parseFloat(result).toFixed(2)} ${name}`;
-    return results;
+    let results;
+    if (localCurr && f && t && a) {
+      const { currency_name: name, rate_for_amount: result } = localCurr;
+      return (results = `${a} ${f} = ${parseFloat(result).toFixed(2)} ${name}`);
+    } else {
+      return (results = false);
+    }
   } catch (error) {
     console.log(error);
   }
-//  return results;
 };
