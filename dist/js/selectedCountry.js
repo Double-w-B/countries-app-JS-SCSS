@@ -1,8 +1,9 @@
-import { mainContainer, countriesData, header, body } from "./main.js";
+import { mainContainer, countriesData, header} from "./main.js";
 import { currency } from "./data.js";
 import { fetchImages } from "./fetch/fetchImages.js";
 import { fetchCurrency } from "./fetch/fetchCurrency.js";
-import hideHandle from "./hideHandle.js";
+import hideBtnHandle from "./hideBtnHandle.js";
+
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
@@ -20,7 +21,7 @@ const currencyConIco = "./icons/currencyConIco.png";
 const selectedCountry = (countryName) => {
   const [data] = countriesData;
   let borderCountries = [];
-  let currChange = true;
+  let currChange = true;  
 
   header.classList.add("opacity");
 
@@ -223,7 +224,7 @@ const selectedCountry = (countryName) => {
       setTimeout(() => {
         selectedCountry(selectedCountryName);
         $(".nav").innerHTML = `<p>Hide</p>`;
-        hideHandle();
+        hideBtnHandle();
       }, 1000);
     });
   });

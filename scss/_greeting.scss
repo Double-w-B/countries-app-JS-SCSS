@@ -5,7 +5,6 @@
     top: 3rem;
     left: 4rem;
     border-radius: 0.5rem;
-    // border-bottom-right-radius: 8rem;
     z-index: 0;
 
     &.about {
@@ -19,24 +18,22 @@
 
             & a {
                 text-decoration: none;
-                color: #ED2939;
+                color: $footer-link;
             }
         }
     }
 
     & p {
         font-size: 2rem;
-        color: #F4FDFF;
+        color: $primary-clr;
         font-family: 'Oswald',
             sans-serif;
-        // font-family: 'Playfair Display',
-        // serif;
     }
 
     & p:last-child {
         margin-top: 1rem;
         font-size: 1.5rem;
-        color: #F4FDFF;
+        color: $primary-clr;
         font-family: 'Lato',
             sans-serif;
         font-weight: 300;

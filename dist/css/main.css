@@ -87,7 +87,7 @@
       -ms-flex-pack: end;
           justify-content: flex-end;
   z-index: 0;
-  background-image: url("/dist/img/hero.png");
+  background-image: url("../dist/img/hero.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -154,8 +154,6 @@
   background-color: #F4FDFF;
   z-index: 1;
   opacity: 0.5;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -188,9 +186,9 @@
   outline: none;
   padding-left: 1rem;
   font-size: 1.2rem;
-  border: 1px solid #99B6D0;
+  border: 1px solid #4E637E;
   border-radius: 0.5rem;
-  color: #1b4332;
+  color: #4E637E;
   background-color: transparent;
 }
 
@@ -206,6 +204,22 @@
       grid-template-columns: repeat(auto-fit, minmax(7rem, 7rem));
   overflow-y: scroll;
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #4E637E #DCDCDC;
+}
+
+.countries__all::-webkit-scrollbar {
+  width: 12px;
+}
+
+.countries__all::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.countries__all::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 10px #4E637E;
 }
 
 .countries__all .countries__single {
@@ -238,8 +252,7 @@
 }
 
 .countries__all .countries__single:hover {
-  border: 1px solid #99B6D0;
-  color: #000428;
+  border: 1px solid #8797AA;
 }
 
 .countries__all .countries__single-flag {
@@ -252,8 +265,8 @@
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  -webkit-filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.24));
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.24));
+  -webkit-filter: drop-shadow(2px 2px 5px #666666);
+  filter: drop-shadow(2px 2px 5px #666666);
 }
 
 .countries__all .countries__single p {
@@ -284,8 +297,6 @@
   width: 70%;
   height: 90%;
   margin: auto;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   -webkit-animation: fadein 2s;
@@ -406,8 +417,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  -webkit-filter: drop-shadow(2px 2px 5px #666666);
-  filter: drop-shadow(2px 2px 5px #666666);
+  -webkit-filter: drop-shadow(drop-shadow-secondary);
+  filter: drop-shadow(drop-shadow-secondary);
 }
 
 .selected__country .info-top--flag p {
@@ -481,8 +492,8 @@
 }
 
 .selected__country .info-bottom--map p a span {
-  -webkit-filter: drop-shadow(2px 2px 5px #666666);
-  filter: drop-shadow(2px 2px 5px #666666);
+  -webkit-filter: drop-shadow(drop-shadow-secondary);
+  filter: drop-shadow(drop-shadow-secondary);
 }
 
 .info-bottom--border__countries {
@@ -521,7 +532,7 @@
 }
 
 .info-bottom--border__countries .country__border:hover {
-  border: 1px solid darkcyan;
+  border: 1px solid #4E637E;
 }
 
 .info-bottom--border__countries .country__border .country__border__flag {
@@ -543,8 +554,8 @@
   max-height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  -webkit-filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.24));
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.24));
+  -webkit-filter: drop-shadow(2px 2px 5px #666666);
+  filter: drop-shadow(2px 2px 5px #666666);
 }
 
 .info-bottom--border__countries .country__border p {
@@ -690,7 +701,7 @@
 }
 
 .info-bottom--converter .converter__calc-result.error {
-  color: #F44336;
+  color: #ED2939;
 }
 
 body {

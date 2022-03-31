@@ -1,6 +1,6 @@
 const $ = document.querySelector.bind(document);
 
-const hideHandle = () => {
+const hideBtnHandle = () => {
   const hideBtn = $(".nav p");
   const selectedCountry = $(".selected__country");
   hideBtn.addEventListener("click", () => {
@@ -15,4 +15,4 @@ const hideHandle = () => {
   });
 };
 
-export default hideHandle;
+export default hideBtnHandle;

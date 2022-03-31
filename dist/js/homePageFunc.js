@@ -23,18 +23,24 @@ const homePageFunc = () => {
       countriesCont.classList.remove("active");
   });
 
-  window.addEventListener("click", (e) => {
+  $("main").addEventListener("click", (e) => {
     if (!e.target.closest(".countries__container")) {
       countriesCont.classList.remove("hover");
       countriesCont.classList.remove("active");
       inputSearch.value = "";
-      // displayMatches();
       allCountries.scrollTo(0, 0);
     }
+
+    if (
+      Object.values($("main").children).find((child) =>
+        child.classList.contains("countries__container")
+      )
+    ) {
       !e.target.closest(".countries__container") &&
         !e.target.closest(".country__single__info") &&
         !e.target.closest("header") &&
         showAllCountries();
+    }
   });
 };
 

@@ -3,7 +3,6 @@
     height: 100%;
     display: flex;
     align-items: center;
-    // margin-left: 2rem;
 
     & img {
         min-width: 65px;
@@ -17,9 +16,7 @@
 }
 
 .nav {
-    // width: 10%;
     height: 100%;
-    // background-color: tomato;
     display: grid;
     place-items: center;
 
@@ -28,7 +25,7 @@
         text-transform: uppercase;
         font-size: 1.5rem;
         cursor: pointer;
-        color: #4E637E;
+        color: $header-clr;
 
         &:active {
             transform: scale(0.7);

@@ -2,7 +2,7 @@
     width: 35%;
     height: 100%;
     font-family: 'Lato',
-    sans-serif;
+        sans-serif;
     // background-color: #fff;
 
 
@@ -12,19 +12,16 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        // justify-content: flex-end;
 
         & img {
             width: 30px;
-            // margin-right: 0.5rem;
-            -webkit-filter: drop-shadow(2px 4px 3px rgba(0, 0, 0, 0.3));
-            filter: drop-shadow(2px 4px 3px rgba(0, 0, 0, 0.3));
+            -webkit-filter: drop-shadow($drop-shadow-primary);
+            filter: drop-shadow($drop-shadow-primary);
         }
 
         & p {
-            // width: 70%;
             text-align: center;
-            text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+            text-shadow: $drop-shadow-primary;
         }
 
     }
@@ -37,20 +34,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        background-color: rgba(255, 255, 255, 0.6);
+        background-color: $primary-opacity1-clr;
 
 
         & label[for="amount"] {
             width: 90%;
-            // height: 20%;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            // background-color: red;
-
-            // &:first-child {
-            //     margin-left: 1rem;
-            // }
 
             & input {
                 border: 1px solid #686868;
@@ -63,7 +54,7 @@
                 cursor: pointer;
 
                 &:focus {
-                    border: 1px solid #0066CB;
+                    border: 1px solid $link-clr;
                     cursor: text;
                 }
             }
@@ -91,7 +82,7 @@
 
 
                     &:focus {
-                        border: 1px solid #0066CB;
+                        border: 1px solid $link-clr;
                     }
                 }
             }
@@ -129,7 +120,7 @@
             font-size: 1.2rem;
 
             &.error {
-                color: #F44336;
+                color: $footer-link;
             }
         }
     }
