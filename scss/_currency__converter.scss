@@ -4,6 +4,38 @@
     font-family: 'Lato',
         sans-serif;
     // background-color: #fff;
+     &.hide {
+         height: 25%;
+     }
+
+      & .converter-btn-container {
+          width: 100%;
+          height: 100%;
+          display: none;
+          align-items: center;
+          justify-content: center;
+          background-color: $primary-opacity1-clr;
+
+          &.visible {
+              display: flex;
+          }
+
+          & .show-converter {
+              width: 30%;
+              height: 1.5rem;
+              margin: 0 auto;
+              background-color: transparent;
+              border: 1px solid #686868;
+              border-radius: 0.3rem;
+              cursor: pointer;
+
+              &:active {
+                  transform: scale(0.7);
+              }
+          }
+      }
+
+
 
 
     & .converter__header {
@@ -36,6 +68,10 @@
         justify-content: space-around;
         background-color: $primary-opacity1-clr;
 
+
+         &.hide {
+             display: none;
+         }
 
         & label[for="amount"] {
             width: 90%;

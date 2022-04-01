@@ -1,6 +1,6 @@
 .info-bottom--border__countries {
     width: 100%;
-    height: 70%;
+    height: 75%;
     padding: 0.2rem 0.5rem 0.5rem 0.5rem;
     display: grid;
     justify-content: center;
@@ -10,6 +10,40 @@
 
     &.countries-length {}
 
+    &.hide {
+        display:block;
+        height: 35%;
+        overflow-y: hidden;
+    }
+
+    & .countries-btn-container {
+        width: 100%;
+        height: 100%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        // background-color: $primary-opacity1-clr;
+
+        &.visible {
+            display: flex ;
+        }
+
+        & .show-countries {
+            width: 30%;
+            height: 1.5rem;
+            margin: 0 auto;
+            background-color: transparent;
+            border: 1px solid #686868;
+            border-radius: 0.3rem;
+            cursor: pointer;
+
+            &:active {
+                transform: scale(0.7);
+            }
+
+
+        }
+    }
 
     & .country__border {
         // max-width: 5.5rem;
@@ -23,6 +57,10 @@
         justify-content: space-between;
         // background-color: green;
         cursor: pointer;
+
+        &.hide {
+            display: none;
+        }
 
         &:hover {
             border: 1px solid $header-clr;
@@ -46,11 +84,15 @@
         }
 
         & p {
-            margin-left: 0 !important;
-            font-size: 1rem !important;
+            margin-left: 0
+                /* !important */
+            ;
+            font-size: 1rem
+                /* !important */
+            ;
             text-align: center;
             font-family: 'Lato',
-            sans-serif;
+                sans-serif;
         }
     }
 }

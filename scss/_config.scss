@@ -16,7 +16,42 @@ $coa-shadow: 2px 2px 2px #666666;
     transition: all 0.4s linear;
   
 }
+// @media screen and (max-width: 1920px) {
+// @media screen and (max-width: 1366px) {
+// @media screen and (max-width: 1200px) {
+// @media screen and (max-width: 992px) {
 
+// @media screen and (max-width: 768px) {
+
+// @media screen and (max-width: 576px) {
+
+
+
+@mixin media-1300{
+    @media screen and (max-width: 1300px) {
+        @content;
+    }
+}
+@mixin media-1100{
+    @media screen and (max-width: 1100px) {
+        @content;
+    }
+}
+@mixin media-992{
+    @media screen and (max-width: 992px) {
+        @content;
+    }
+}
+@mixin media-769{
+    @media screen and (max-width: 769px) {
+        @content;
+    }
+}
+@mixin media-600{
+    @media screen and (max-width: 600px) {
+        @content;
+    }
+}
 
 
 @mixin fade-in{

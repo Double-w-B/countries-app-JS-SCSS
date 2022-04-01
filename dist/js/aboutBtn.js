@@ -1,6 +1,6 @@
 const $ = document.querySelector.bind(document);
 
-const aboutInfo = () => {
+const aboutBtn = () => {
   const greetingContainer = $(".greeting");
   const navBar = $(".nav");
 
@@ -32,4 +32,4 @@ const aboutInfo = () => {
   });
 };
 
-export default aboutInfo;
+export default aboutBtn;

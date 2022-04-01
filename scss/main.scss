@@ -7,6 +7,7 @@
 @import "selected__country";
 @import "border__countries";
 @import "currency__converter";
+@import "mediaQueries";
 
 body {
     height: 100vh;
@@ -30,11 +31,20 @@ header {
     top: 0;
     background-color: $primary-clr;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     z-index: 1;
 
     &.opacity {
         background-color: $primary-opacity1-clr;
+    }
+
+    .width {
+        width: 30%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
 }
@@ -46,4 +56,8 @@ main {
     align-items: flex-end;
     position: relative;
     overflow-x: hidden;
+
+    // &.overflow {
+    //     overflow-y: scroll;
+    // }
 }

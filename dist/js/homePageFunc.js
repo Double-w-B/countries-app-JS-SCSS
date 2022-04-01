@@ -15,7 +15,7 @@ const homePageFunc = () => {
   inputSearch.addEventListener("keyup", displayMatches);
 
   countriesCont.addEventListener("mouseover", () =>
-    countriesCont.classList.add("hover")
+    window.innerWidth> 992 && countriesCont.classList.add("hover")
   );
   countriesCont.addEventListener("click", (e) => {
     !e.target.closest("#search") &&

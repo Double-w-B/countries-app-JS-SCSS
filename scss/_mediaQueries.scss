@@ -1,0 +1,263 @@
+@include media-1300 {
+
+    .greeting,
+    .countries__container {
+
+        width: 50%;
+    }
+
+    .info-bottom--border__countries {
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        scrollbar-color: $header-clr #DCDCDC;
+
+        &::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px $header-clr;
+            -webkit-box-shadow: inset 0 0 10px $header-clr;
+        }
+
+    }
+
+    .selected__country {
+        width: 80%;
+    }
+}
+
+@include media-1100 {
+
+    .greeting,
+    .countries__container {
+        width: 55%;
+    }
+
+    .selected__country {
+        width: 80%;
+
+        & .info-top--main {
+            width: 60%;
+        }
+
+        & .info-top--flag {
+            width: 40%;
+        }
+
+        & .info-bottom--map {
+            width: 60%;
+        }
+
+        & .info-bottom--converter {
+            width: 40%;
+
+        }
+
+    }
+
+}
+
+@include media-992 {
+    .greeting {
+        width: 75%;
+        top: 2rem;
+
+        & p {
+            font-size: 2.2rem;
+        }
+
+        & p:last-child {
+            font-size: 1.7rem;
+
+        }
+    }
+
+    .countries__container {
+        width: 80%;
+        margin: 0 auto 1rem auto;
+        opacity: 1;
+    }
+
+    .hero {
+        width: 100%;
+        bottom: 0;
+        right: 0;
+        opacity: 0.05;
+    }
+
+    .selected__country {
+
+        & .info-top--flag__img {
+            height: 65%;
+        }
+    }
+
+    .info-bottom--border__countries {
+        & .country__border {
+            border: none;
+
+            &:hover {
+                border: none;
+            }
+        }
+    }
+}
+
+@include media-769 {
+    .greeting {
+        width: 90%;
+        left: 2rem;
+
+        & p {
+            font-size: 2rem;
+        }
+
+        & p:last-child {
+            font-size: 1.5rem;
+
+        }
+    }
+
+    .countries__container {
+        width: 85%;
+
+        &-search {
+            & form {
+                width: 60%;
+
+            }
+        }
+    }
+
+    .countries__all {
+        .countries__single {
+            border: none;
+
+            &:hover {
+                border: none;
+
+            }
+        }
+    }
+
+
+    .selected__country {
+        height: 95%;
+
+        & .info-top {
+            height: 45%;
+
+            &--main {
+                width: 70%;
+            }
+
+            &--flag {
+                width: 30%;
+                background-color: $primary-opacity2-clr;
+
+                & p {
+                    display: none;
+                }
+            }
+        }
+
+        & .info-bottom {
+            height: 55%;
+            flex-direction: column;
+
+            &--map {
+                width: 100%;
+                height: 75%;
+                background-color: $primary-opacity2-clr;
+            }
+
+            .info-bottom--converter {
+                width: 100%;
+
+
+
+                & .converter__calc {
+                    background-color: $primary-opacity1-clr;
+
+
+                }
+            }
+        }
+    }
+
+}
+
+@include media-600 {
+
+    header {
+        padding: 0 1rem !important;
+    }
+
+    .nav {
+        & p {
+            font-size: 1.2rem;
+        }
+    }
+
+    .countries__container {
+        grid-template-columns: repeat(auto-fit, minmax(3rem, 3rem));
+
+        &-search {
+            & form {
+                width: 70%;
+            }
+        }
+
+        & .countries__single {
+            max-height: 6rem;
+        }
+    }
+
+    .greeting {
+        width: 95%;
+        left: 1rem;
+        padding: 0.5rem;
+
+        & p {
+            font-size: 1.7rem;
+        }
+
+        & p:last-child {
+            font-size: 1.3rem;
+
+        }
+    }
+
+    .countries__container {
+        width: 90%;
+        height: 40%;
+
+        &.active {
+            height: 55%;
+        }
+    }
+
+    .selected__country {
+        width: 90%;
+
+        .info-top {
+            &--main {
+                width: 80%;
+            }
+
+            &--flag {
+                width: 20%;
+            }
+        }
+    }
+
+}

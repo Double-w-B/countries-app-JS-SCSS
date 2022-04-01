@@ -1,4 +1,4 @@
-import { mainContainer, countriesData, header} from "./main.js";
+import { mainContainer, countriesData, header } from "./main.js";
 import { currency } from "./data.js";
 import { fetchImages } from "./fetch/fetchImages.js";
 import { fetchCurrency } from "./fetch/fetchCurrency.js";
@@ -21,7 +21,7 @@ const currencyConIco = "./icons/currencyConIco.png";
 const selectedCountry = (countryName) => {
   const [data] = countriesData;
   let borderCountries = [];
-  let currChange = true;  
+  let currChange = true;
 
   header.classList.add("opacity");
 
@@ -94,11 +94,12 @@ const selectedCountry = (countryName) => {
       $(".info-bottom--border__countries").classList.add("countries-length");
       $(".countries-length").style.gridTemplateColumns =
         "repeat(auto-fit, minmax(1rem, 4.6rem))";
-      $(".countries-length").style.fontSize = "0.9rem";
+      $(".countries-length").style.fontSize = "0.8rem";
     } else {
       $(".info-bottom--border__countries").classList.remove("countries-length");
     }
-    $(".info-bottom--border__countries").innerHTML = borderCountries
+    // $(".info-bottom--border__countries").innerHTML = borderCountries
+     const showCountries = borderCountries
       .map((country) => {
         const {
           name: { common },
@@ -109,10 +110,19 @@ const selectedCountry = (countryName) => {
       <div class="country__border__flag">
       <img src="${flag}" alt="flag" />
       </div>
-      <p>${common}</p>
+      <p ${
+        borderCountries.length > 10 && "style='font-size: 0.8rem'"
+      }>${common}</p>
     </div>`;
       })
       .join("");
+
+      $(".info-bottom--border__countries").innerHTML = `
+      ${showCountries}
+<div class="countries-btn-container">
+        <button class="show-countries">countries</button>
+            </div>
+      `;
   };
 
   mainContainer.innerHTML = `
@@ -153,6 +163,7 @@ const selectedCountry = (countryName) => {
           </div>
         </div>
         <div class="info-bottom">
+
           <div class="info-bottom--map">
             <p><img src="${pointIco}" alt="icon" />
               check on the map: 
@@ -169,9 +180,14 @@ const selectedCountry = (countryName) => {
                 : "There are no border countries."
             } </p>
             <div class="info-bottom--border__countries">
+            
             </div>
           </div>
+
           <div class="info-bottom--converter">
+      <div class="converter-btn-container">
+        <button class="show-converter">converter</button>
+        </div>
             <div class="converter__calc">
             <div class="converter__header">
          <img src="${currencyConIco}" alt="icon" />
@@ -209,6 +225,16 @@ const selectedCountry = (countryName) => {
       </div>
 `;
   showBorderCountries();
+
+  if (window.innerWidth < 769) {
+    $(".info-bottom--converter").classList.add("hide");
+    $(".converter__calc").classList.add("hide");
+    $(".converter-btn-container").classList.add("visible");
+  } else {
+    $(".info-bottom--converter").classList.remove("hide");
+    $(".converter__calc").classList.remove("hide");
+    $(".converter-btn-container").classList.remove("visible");
+  }
 
   borderCountries.length > 10
     ? $(".selected__country").classList.add("extra-width")
@@ -278,6 +304,32 @@ const selectedCountry = (countryName) => {
         }, 1500);
       }
     });
+  });
+
+  /* countriesBnt & converterBtn */
+
+  $(".show-converter").addEventListener("click", () => {
+    $(".info-bottom--border__countries").classList.add("hide");
+    $$(".country__border").forEach((item) => item.classList.add("hide"));
+    $(".countries-btn-container").classList.add("visible");
+    $(".info-bottom--map").classList.add("short");
+    setTimeout(()=>{
+      $(".info-bottom--converter").classList.remove("hide");
+      $(".converter__calc").classList.remove("hide");
+      $(".converter-btn-container").classList.remove("visible");
+    }, 200)
+    
+  });
+  $(".show-countries").addEventListener("click", () => {
+    $(".info-bottom--converter").classList.add("hide");
+    $(".converter__calc").classList.add("hide");
+    $(".converter-btn-container").classList.add("visible");
+
+    $(".info-bottom--border__countries").classList.remove("hide");
+    $$(".country__border").forEach((item) => item.classList.remove("hide"));
+    $(".countries-btn-container").classList.remove("visible");
+    $(".info-bottom--map").classList.remove("short");
+
   });
 };
 
