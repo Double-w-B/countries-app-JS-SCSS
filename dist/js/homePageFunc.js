@@ -32,8 +32,9 @@ const homePageFunc = () => {
     }
 
     if (
-      Object.values($("main").children).find((child) =>
-        child.classList.contains("countries__container")
+      Object.values($("main").children).find(
+        (child) =>
+          child.classList.contains("countries__container") 
       )
     ) {
       !e.target.closest(".countries__container") &&

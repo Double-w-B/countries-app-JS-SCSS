@@ -154,6 +154,7 @@
             // background-color: black;
             text-align: center;
             font-size: 1.2rem;
+            transition: all 0.1s ease-in-out;
 
             &.error {
                 color: $footer-link;

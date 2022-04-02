@@ -1,7 +1,6 @@
 import { countriesData } from "../main.js";
 import showAllCountries from "../showAllCountries.js";
 
-const $ = document.querySelector.bind(document);
 const allCountriesUrl = "https://restcountries.com/v3.1/all";
 
 const fetchCountries = async () => {
@@ -10,7 +9,8 @@ const fetchCountries = async () => {
     const data = await response.json();
     countriesData.push(data);
 
-    showAllCountries();    
+    showAllCountries();
+ 
   } catch (error) {
     console.log(error);
   }

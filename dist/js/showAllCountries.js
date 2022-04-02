@@ -2,6 +2,9 @@ import { countriesData } from "./main.js";
 import singleCountryHandle from "./singleCountryHandle.js";
 
 const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+
+let firstLoad = true;
 
 const showAllCountries = () => {
   const allCountries = $(".countries__all");
@@ -20,7 +23,7 @@ const showAllCountries = () => {
       } = country;
 
       return `
-            <div class="countries__single">
+            <div class="countries__single ${firstLoad && "fadeIn"}">
             <div class="countries__single-flag">
               <img src="${png}" alt="flagImg" loading="lazy"/>
             </div>
@@ -33,6 +36,14 @@ const showAllCountries = () => {
     `;
     })
     .join(" ");
+
+  setTimeout(() => {
+    $$(".countries__single").forEach((country) => {
+      country.classList.remove("fadeIn");
+    });
+
+    firstLoad = false;
+  }, 2000);
 
   singleCountryHandle();
 };

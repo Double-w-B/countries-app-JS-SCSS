@@ -33,13 +33,7 @@ logo.addEventListener("click", () => {
   showAllCountries();
 });
 
-$(".width").innerHTML = `<p>${window.innerWidth} PX</p>`;
-
-
-
 window.addEventListener("resize", () => {
-  $(".width").innerHTML = `<p>${window.innerWidth} PX</p>`;
-
   if (
     $(".selected__country") &&
     window.innerWidth < 769 &&

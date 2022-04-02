@@ -246,6 +246,9 @@
   -webkit-transition: all 0.1s linear;
   transition: all 0.1s linear;
   cursor: pointer;
+}
+
+.countries__all .countries__single.fadeIn {
   -webkit-animation: fadein 2s;
   /* Safari, Chrome and Opera > 12.1 */
   /* Firefox < 16 */
@@ -505,6 +508,11 @@
   grid-gap: 1rem;
   -ms-grid-columns: (minmax(1rem, 6rem))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(1rem, 6rem));
+}
+
+.info-bottom--border__countries.countries-length {
+  -ms-grid-columns: (minmax(1rem, 4.6rem))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(1rem, 4.6rem));
 }
 
 .info-bottom--border__countries.hide {
@@ -780,6 +788,8 @@
   margin: 0 auto;
   text-align: center;
   font-size: 1.2rem;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .info-bottom--converter .converter__calc-result.error {
@@ -1013,16 +1023,6 @@ header {
 
 header.opacity {
   background-color: rgba(255, 255, 255, 0.6);
-}
-
-header .width {
-  width: 30%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
 }
 
 main {
