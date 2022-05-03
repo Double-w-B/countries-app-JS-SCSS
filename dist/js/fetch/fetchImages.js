@@ -5,9 +5,9 @@ const backgroundImgUrl =
 
 const fetchImages = async (country) => {
   try {
-    const response = await fetch(backgroundImgUrl + country + " nature");
+    const response = await fetch(backgroundImgUrl + country + "%20landscape");
     const data = await response.json();
-    let number = Math.floor(Math.random() * 6);
+    let number = Math.floor(Math.random() * 9);
     body.style.backgroundImage = `url(${data.results[number].urls.regular})`;
   } catch (error) {
     console.log(error);

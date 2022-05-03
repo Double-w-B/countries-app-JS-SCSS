@@ -1,9 +1,9 @@
 import homePage from "./homePage.js";
+import homePageFunc from "./homePageFunc.js";
+import aboutBtn from "./aboutBtn.js";
 import fetchCountries from "./fetch/fetchCountries.js";
 import showAllCountries from "./showAllCountries.js";
-import homePageFunc from "./homePageFunc.js";
 import singleCountryHandle from "./singleCountryHandle.js";
-import aboutBtn from "./aboutBtn.js";
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -12,7 +12,10 @@ const body = $("body");
 const header = $("header");
 const logo = $(".logo");
 const mainContainer = $("main");
-let countriesData = [];
+let countriesData =
+  localStorage.getItem("allCountries") === null
+    ? []
+    : [JSON.parse(localStorage.getItem("allCountries"))];
 
 homePage();
 aboutBtn();
@@ -20,7 +23,10 @@ aboutBtn();
 const countriesCont = $(".countries__container");
 const allCountries = $(".countries__all");
 const inputSearch = $("#search");
-fetchCountries();
+
+localStorage.getItem("allCountries") === null
+  ? fetchCountries()
+  : showAllCountries();
 
 homePageFunc();
 
@@ -31,6 +37,10 @@ logo.addEventListener("click", () => {
   aboutBtn();
   homePageFunc();
   showAllCountries();
+  history.pushState("home page", "", `/`);
+  setTimeout(() => {
+    document.querySelector(".hero").classList.add("show");
+  }, 1000);
 });
 
 window.addEventListener("resize", () => {
@@ -60,6 +70,19 @@ window.addEventListener("resize", () => {
     $(".countries-btn-container").classList.remove("visible");
     $(".info-bottom--map").classList.remove("short");
   }
+});
+
+window.addEventListener("popstate", () => {
+  header.classList.remove("opacity");
+  body.removeAttribute("style");
+  homePage();
+  aboutBtn();
+  homePageFunc();
+  showAllCountries();
+  history.pushState("home page", "", `/`);
+  setTimeout(() => {
+    document.querySelector(".hero").classList.add("show");
+  }, 1000);
 });
 
 export {

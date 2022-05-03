@@ -9,18 +9,22 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 /* icons */
-const continentIco = "./icons/continent.png";
-const areaIco = "./icons/area.png";
-const populationIco = "./icons/population.png";
-const capitalIco = "./icons/capital.png";
-const languageIco = "./icons/language.png";
-const currencyIco = "./icons/currency.png";
-const pointIco = "./icons/point.png";
-const borderIco = "./icons/border.png";
-const currencyConIco = "./icons/currencyConIco.png";
-const exchangeIco = "./icons/exchange.png";
+const continentIco = "../icons/continent.png";
+const areaIco = "../icons/area.png";
+const populationIco = "../icons/population.png";
+const capitalIco = "../icons/capital.png";
+const languageIco = "../icons/language.png";
+const currencyIco = "../icons/currency.png";
+const pointIco = "../icons/point.png";
+const borderIco = "../icons/border.png";
+const currencyConIco = "../icons/currencyConIco.png";
+const exchangeIco = "../icons/exchange.png";
 
 const selectedCountry = (countryName) => {
+  countryName =
+    countryName || JSON.parse(localStorage.getItem("selectedCountryName"));
+  console.log(window.location.pathname);
+
   const [data] = countriesData;
   let borderCountries = [];
   let currChange = true;
@@ -28,7 +32,7 @@ const selectedCountry = (countryName) => {
   header.classList.add("opacity");
 
   const foundCountry = data.find((country) => {
-    if (country.name.common === countryName) return country;
+    return country.name.common === countryName;
   });
 
   const {
@@ -47,7 +51,6 @@ const selectedCountry = (countryName) => {
     flag: flagIcon,
   } = foundCountry;
 
-  
   borders &&
     data.map((country) => {
       borders.some((border) => {
@@ -67,6 +70,11 @@ const selectedCountry = (countryName) => {
     }
   };
 
+  const checkCurrName = () => {
+    return currencies
+      ? `100 ${findCurr(currencies).slice(20, 23)}`
+      : "no local currency";
+  };
 
   mainContainer.innerHTML = `
 <div class="selected__country">
@@ -140,7 +148,9 @@ const selectedCountry = (countryName) => {
           </div>
               <label for="amount"
                 >Amount
-                <input type="text" id="amount" maxlength="10"
+                <input type="text" id="amount" maxlength="10" placeholder="${checkCurrName()}"
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder='${checkCurrName()}'"
                 />
               </label>
 
@@ -191,8 +201,18 @@ const selectedCountry = (countryName) => {
   $$(".country__border").forEach((country) => {
     country.addEventListener("click", (e) => {
       let selectedCountryName = e.currentTarget.innerText;
-      mainContainer.innerHTML = "";
+
       fetchImages(selectedCountryName);
+      localStorage.setItem(
+        "selectedCountryName",
+        JSON.stringify(selectedCountryName)
+      );
+      mainContainer.innerHTML = "";
+      window.history.pushState(
+        "",
+        selectedCountryName,
+        `/countries/${selectedCountryName.split(" ").join("_")}`
+      );
       setTimeout(() => {
         selectedCountry(selectedCountryName);
         $(".nav").innerHTML = `<p>Hide</p>`;
@@ -202,10 +222,26 @@ const selectedCountry = (countryName) => {
   });
 
   /* Change Btn */
-  $(".converter__calc-change").addEventListener("click", () => {
-    currChange = !currChange;
-    $(".converter__calc-result").innerHTML = "";
-    $(".converter__calc-currencies").innerHTML = `
+  currencies &&
+    $(".converter__calc-change").addEventListener("click", () => {
+      currChange = !currChange;
+      let countryCurr = findCurr(currencies).slice(20, 23);
+      if (currChange) {
+        $(
+          "label[for='amount']"
+        ).innerHTML = `Amount<input type="text" id="amount" maxlength="10" placeholder="100 ${countryCurr}"}
+      onfocus="this.placeholder=''"
+      onblur="this.placeholder='100 ${countryCurr}'"
+      />`;
+      } else {
+        $(
+          "label[for='amount']"
+        ).innerHTML = `Amount<input type="text" id="amount" maxlength="10" placeholder="select currency"
+       onfocus="this.placeholder=''"
+      onblur="this.placeholder='select currency'"/>`;
+      }
+      $(".converter__calc-result").innerHTML = "";
+      $(".converter__calc-currencies").innerHTML = `
                 <label for="from"
                   >From
                   <select name="from" id="from">
@@ -228,7 +264,19 @@ const selectedCountry = (countryName) => {
                   </select>
                 </label>
   `;
-  });
+
+      /* Handle From input */
+      currencies &&
+        $("#from").addEventListener("change", (e) => {
+          $(".converter__calc-result").innerHTML = "";
+          $(
+            "label[for='amount']"
+          ).innerHTML = `Amount<input type="text" id="amount" maxlength="10" placeholder="100 ${e.target.value}"}
+      onfocus="this.placeholder=''"
+      onblur="this.placeholder='100 ${e.target.value}'"
+      />`;
+        });
+    });
 
   /* Input Amount */
   const inputAm = $("#amount");

@@ -1,7 +1,7 @@
 import fetchImages from "./fetch/fetchImages.js";
-import selectedCountry from "./selectedCountryPage.js";
-import {mainContainer} from "./main.js";
+import { mainContainer } from "./main.js";
 import hideBtnHandle from "./hideBtnHandle.js";
+import selectedCountry from "./selectedCountryPage.js";
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -11,8 +11,21 @@ const singleCountryHandle = () => {
     country.addEventListener("click", (e) => {
       let selectedCountryName = e.currentTarget.innerText;
 
-      mainContainer.innerHTML = "";
       fetchImages(selectedCountryName);
+
+      localStorage.setItem(
+        "selectedCountryName",
+        JSON.stringify(selectedCountryName.split(" ").join("_"))
+      );
+
+      mainContainer.innerHTML = "";
+
+      window.history.pushState(
+        selectedCountryName,
+        "",
+        `/countries/${selectedCountryName.split(" ").join("_")}`
+      );
+
       $(".nav").innerHTML = "";
 
       setTimeout(() => {

@@ -19,9 +19,11 @@ export const showCurr = (currencies) => {
 };
 
 export const findCurr = (currencies) => {
-  for (const [key, value] of Object.entries(currency)) {
-    if (key === Object.keys(currencies)[0]) {
-      return `<option value="${key}">${key}</option>`;
+  if (currencies) {
+    for (const [key, value] of Object.entries(currency)) {
+      if (key === Object.keys(currencies)[0]) {
+        return `<option value="${key}">${key}</option>`;
+      }
     }
   }
 };

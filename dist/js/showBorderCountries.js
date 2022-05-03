@@ -17,7 +17,9 @@ const showBorderCountries = (borderCountries) => {
       <img src="${flag}" alt="flag" />
       </div>
       <p ${
-        borderCountries.length > 10 && "style='font-size: 0.8rem'"
+        borderCountries.length > 10
+          ? "style='font-size: 0.9rem'"
+          : common.length >= 14 && "style='font-size: 0.8rem'"
       }>${common}</p>
     </div>`;
     })

@@ -75,7 +75,7 @@
 .hero {
   width: 50%;
   height: 100%;
-  bottom: 0;
+  bottom: -100%;
   right: -4rem;
   position: absolute;
   display: -webkit-box;
@@ -92,6 +92,10 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
+}
+
+.hero.show {
+  bottom: 0;
 }
 
 .hero img {
@@ -1035,6 +1039,6 @@ main {
       -ms-flex-align: end;
           align-items: flex-end;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 /*# sourceMappingURL=main.css.map */

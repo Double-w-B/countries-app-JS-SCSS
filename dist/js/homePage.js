@@ -1,7 +1,8 @@
 import { mainContainer } from "./main.js";
 
 const homePage = () => {
-  
+
+
   mainContainer.innerHTML = `
       <div class="greeting">
         <p>

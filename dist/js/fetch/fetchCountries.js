@@ -8,9 +8,8 @@ const fetchCountries = async () => {
     const response = await fetch(allCountriesUrl);
     const data = await response.json();
     countriesData.push(data);
-
+    localStorage.setItem("allCountries", JSON.stringify(data));
     showAllCountries();
- 
   } catch (error) {
     console.log(error);
   }
