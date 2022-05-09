@@ -1,9 +1,8 @@
 import { mainContainer, countriesData, header } from "./main.js";
-import fetchImages from "./fetch/fetchImages.js";
 import fetchCurrency from "./fetch/fetchCurrency.js";
-import hideBtnHandle from "./hideBtnHandle.js";
 import { showAllCurrencies, showCurr, findCurr } from "./showCurrencies.js";
 import showBorderCountries from "./showBorderCountries.js";
+import { handleSelectedCountry } from "./handleSelectedCountry.js";
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -23,7 +22,6 @@ const exchangeIco = "../icons/exchange.png";
 const selectedCountry = (countryName) => {
   countryName =
     countryName || JSON.parse(localStorage.getItem("selectedCountryName"));
-  console.log(window.location.pathname);
 
   const [data] = countriesData;
   let borderCountries = [];
@@ -198,28 +196,11 @@ const selectedCountry = (countryName) => {
   $(".info-top--flag__img").style.backgroundImage = `url(${flag})`;
 
   /* Select one from border Countries */
-  $$(".country__border").forEach((country) => {
-    country.addEventListener("click", (e) => {
-      let selectedCountryName = e.currentTarget.innerText;
 
-      fetchImages(selectedCountryName);
-      localStorage.setItem(
-        "selectedCountryName",
-        JSON.stringify(selectedCountryName)
-      );
-      mainContainer.innerHTML = "";
-      window.history.pushState(
-        "",
-        selectedCountryName,
-        `/countries/${selectedCountryName.split(" ").join("_")}`
-      );
-      setTimeout(() => {
-        selectedCountry(selectedCountryName);
-        $(".nav").innerHTML = `<p>Hide</p>`;
-        hideBtnHandle();
-      }, 1000);
-    });
-  });
+  $(".info-bottom--border__countries").addEventListener(
+    "click",
+    handleSelectedCountry
+  );
 
   /* Change Btn */
   currencies &&

@@ -3,7 +3,6 @@ import homePageFunc from "./homePageFunc.js";
 import aboutBtn from "./aboutBtn.js";
 import fetchCountries from "./fetch/fetchCountries.js";
 import showAllCountries from "./showAllCountries.js";
-import singleCountryHandle from "./singleCountryHandle.js";
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -92,6 +91,5 @@ export {
   allCountries,
   inputSearch,
   countriesCont,
-  singleCountryHandle,
   mainContainer,
 };

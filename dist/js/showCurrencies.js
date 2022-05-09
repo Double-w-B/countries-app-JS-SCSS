@@ -14,14 +14,24 @@ export const showAllCurrencies = () => {
 };
 
 export const showCurr = (currencies) => {
-  const currVal = Object.values(currencies)[0];
-  return `${currVal.name} (${currVal.symbol})`;
+  let currVal;
+  for (const [key] of Object.entries(currency)) {
+    if (key === Object.keys(currencies)[0])
+      currVal = Object.values(currencies)[0];
+
+    if (key === Object.keys(currencies)[1])
+      currVal = Object.values(currencies)[1];
+  }
+  return `${currVal.name} ${!currVal.symbol ? "" : "(" + currVal.symbol + ")"}`;
 };
 
 export const findCurr = (currencies) => {
   if (currencies) {
-    for (const [key, value] of Object.entries(currency)) {
+    for (const [key] of Object.entries(currency)) {
       if (key === Object.keys(currencies)[0]) {
+        return `<option value="${key}">${key}</option>`;
+      }
+      if (key === Object.keys(currencies)[1]) {
         return `<option value="${key}">${key}</option>`;
       }
     }

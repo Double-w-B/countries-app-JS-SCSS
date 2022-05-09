@@ -1,4 +1,5 @@
-import { countriesData, singleCountryHandle } from "./main.js";
+import { countriesData } from "./main.js";
+import { handleSelectedCountry } from "./handleSelectedCountry.js";
 
 const $ = document.querySelector.bind(document);
 
@@ -37,5 +38,5 @@ export const displayMatches = () => {
     .join("");
 
   allCountries.innerHTML = matchCountry;
-  singleCountryHandle();
+  $(".countries__all").addEventListener("click", handleSelectedCountry);
 };
