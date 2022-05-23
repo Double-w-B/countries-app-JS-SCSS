@@ -197,10 +197,9 @@ const selectedCountry = (countryName) => {
 
   /* Select one from border Countries */
 
-  $(".info-bottom--border__countries").addEventListener(
-    "click",
-    handleSelectedCountry
-  );
+  $(".info-bottom--border__countries").addEventListener("click", (e) => {
+    e.target.closest(".country__border") && handleSelectedCountry(e);
+  });
 
   /* Change Btn */
   currencies &&
@@ -291,18 +290,21 @@ const selectedCountry = (countryName) => {
 
   /* countriesBnt & converterBtn */
 
-  $(".show-converter").addEventListener("click", () => {
+  $(".show-converter").addEventListener("click", (e) => {
+    e.stopPropagation();
     $(".info-bottom--border__countries").classList.add("hide");
     $$(".country__border").forEach((item) => item.classList.add("hide"));
     $(".countries-btn-container").classList.add("visible");
     $(".info-bottom--map").classList.add("short");
+
     setTimeout(() => {
       $(".info-bottom--converter").classList.remove("hide");
       $(".converter__calc").classList.remove("hide");
       $(".converter-btn-container").classList.remove("visible");
     }, 200);
   });
-  $(".show-countries").addEventListener("click", () => {
+  $(".show-countries").addEventListener("click", (e) => {
+    e.stopPropagation();
     $(".info-bottom--converter").classList.add("hide");
     $(".converter__calc").classList.add("hide");
     $(".converter-btn-container").classList.add("visible");
