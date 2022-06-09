@@ -12,9 +12,9 @@ const header = $("header");
 const logo = $(".logo");
 const mainContainer = $("main");
 let countriesData =
-  localStorage.getItem("allCountries") === null
+  sessionStorage.getItem("allCountries") === null
     ? []
-    : [JSON.parse(localStorage.getItem("allCountries"))];
+    : [JSON.parse(sessionStorage.getItem("allCountries"))];
 
 homePage();
 aboutBtn();

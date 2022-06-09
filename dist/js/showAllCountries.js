@@ -11,21 +11,25 @@ const showAllCountries = () => {
 
   const [data] = countriesData;
 
-  allCountries.innerHTML = data
-    .sort((a, b) => {
-      if (a.name.common.slice(0, 1) > b.name.common.slice(0, 1)) return 1;
-      if (a.name.common.slice(0, 1) < b.name.common.slice(0, 1)) return 0;
-    })
+  const sortedCountries = data.sort((a, b) =>
+    a.name.common === b.name.common ? 0 : a.name.common < b.name.common ? -1 : 1
+  );
+
+  allCountries.innerHTML = sortedCountries
     .map((country) => {
       const {
         flags: { png },
         name: { common },
       } = country;
 
+      const spinnerIcon = "./icons/spinner.gif";
+
       return `
             <div class="countries__single ${firstLoad && "fadeIn"}">
             <div class="countries__single-flag">
-              <img src="${png}" alt="flagImg" loading="lazy"/>
+              <img src="${firstLoad ? spinnerIcon : png}" 
+              alt="${common} flag image which leads to country information" 
+              class=${!firstLoad && "shadow"} />
             </div>
               <p ${
                 common.length > 28
@@ -37,6 +41,21 @@ const showAllCountries = () => {
     })
     .join(" ");
 
+  firstLoad &&
+    $$(".countries__single-flag img").forEach((img) => {
+      setTimeout(() => {
+        sortedCountries.map((country) => {
+          if (
+            country.name.common ===
+            img.parentElement.nextElementSibling.innerText
+          ) {
+            img.src = country.flags.png;
+            img.classList.add("shadow");
+          }
+        });
+      }, 2000);
+    });
+
   setTimeout(() => {
     $$(".countries__single").forEach((country) => {
       country.classList.remove("fadeIn");
@@ -44,8 +63,8 @@ const showAllCountries = () => {
 
     firstLoad = false;
   }, 2000);
-  $(".countries__all").addEventListener("click", handleSelectedCountry);
 
+  $(".countries__all").addEventListener("click", handleSelectedCountry);
 };
 
 export default showAllCountries;
