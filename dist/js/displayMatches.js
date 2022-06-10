@@ -25,7 +25,9 @@ export const displayMatches = () => {
       return `
      <div class="countries__single">
             <div class="countries__single-flag">
-              <img src="${png}" alt="flag" />
+              <img src="${png}" 
+              alt="${common} flag image which leads to country information" 
+              class="shadow" />
             </div>
               <p ${
                 common.length > 28

@@ -100,10 +100,12 @@
             }
 
             & p {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                margin-top: 0.2rem;
                 text-shadow: $drop-shadow-primary;
                 text-align: center;
-
+                color: $header-clr;
+                opacity: 0.7;
             }
         }
     }

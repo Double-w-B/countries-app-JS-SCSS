@@ -7,12 +7,15 @@ const $ = document.querySelector.bind(document);
 
 export const handleSelectedCountry = (e) => {
   let selectedCountryName;
-  if (e.target.closest(".countries__single"))
-    selectedCountryName = e.target.closest(".countries__single").innerText;
-  if (e.target.closest(".country__border"))
-    selectedCountryName = e.target.closest(".country__border").innerText;
 
-  fetchImages(selectedCountryName);
+  if (e.target.closest(".countries__single")) {
+    selectedCountryName = e.target.closest(".countries__single").innerText;
+    fetchImages(selectedCountryName);
+  }
+  if (e.target.closest(".country__border")) {
+    selectedCountryName = e.target.closest(".country__border").innerText;
+    fetchImages(selectedCountryName);
+  }
 
   localStorage.setItem(
     "selectedCountryName",
