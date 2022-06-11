@@ -27,9 +27,13 @@ const showAllCountries = () => {
       return `
             <div class="countries__single ${firstLoad && "fadeIn"}">
             <div class="countries__single-flag">
-              <img src="${firstLoad ? spinnerIcon : png}" 
-              alt="${common} flag image which leads to country information" 
-              class=${!firstLoad && "shadow"} />
+           
+           <img src="${firstLoad ? spinnerIcon : png}"
+           data-src="${png}"
+           alt="${common} flag image which leads to country information"
+           class=${firstLoad ? "lazy" : "shadow"}
+           loading="${firstLoad ? "lazy" : "eager"}"/>
+              
             </div>
               <p ${
                 common.length > 28
@@ -41,30 +45,38 @@ const showAllCountries = () => {
     })
     .join(" ");
 
-  firstLoad &&
-    $$(".countries__single-flag img").forEach((img) => {
+  const checkImgPosition = (img) => {
+    if (
+      img.getBoundingClientRect().bottom < 860 &&
+      img.firstElementChild.firstElementChild.classList.contains("lazy")
+    ) {
+      img.firstElementChild.firstElementChild.classList.remove("lazy");
       setTimeout(() => {
-        sortedCountries.map((country) => {
-          if (
-            country.name.common ===
-            img.parentElement.nextElementSibling.innerText
-          ) {
-            img.src = country.flags.png;
-            img.classList.add("shadow");
-          }
-        });
-      }, 2000);
+        img.firstElementChild.firstElementChild.src =
+          img.firstElementChild.firstElementChild.dataset.src;
+        img.firstElementChild.firstElementChild.classList.add("shadow");
+      }, 1500);
+    }
+  };
+
+  $$(".countries__single").forEach((img) => {
+    checkImgPosition(img);
+  });
+  allCountries.addEventListener("scroll", () => {
+    $$(".countries__single").forEach((img) => {
+      checkImgPosition(img);
     });
+  });
 
-  setTimeout(() => {
-    $$(".countries__single").forEach((country) => {
-      country.classList.remove("fadeIn");
+  allCountries.addEventListener("resize", () => {
+    $$(".countries__single").forEach((img) => {
+      checkImgPosition(img);
     });
+  });
 
-    firstLoad = false;
-  }, 2000);
+  firstLoad = false;
 
-  $(".countries__all").addEventListener("click", handleSelectedCountry);
+  allCountries.addEventListener("click", handleSelectedCountry);
 };
 
 export default showAllCountries;

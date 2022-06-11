@@ -197,6 +197,46 @@
   background-color: transparent;
 }
 
+.countries__container-search form input::-webkit-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /* Firefox */
+  font-style: italic;
+  opacity: 0.5;
+}
+
+.countries__container-search form input:-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /* Firefox */
+  font-style: italic;
+  opacity: 0.5;
+}
+
+.countries__container-search form input::-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /* Firefox */
+  font-style: italic;
+  opacity: 0.5;
+}
+
+.countries__container-search form input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /* Firefox */
+  font-style: italic;
+  opacity: 0.5;
+}
+
+.countries__container-search form input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-style: italic;
+  opacity: 0.5;
+}
+
+.countries__container-search form input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font-style: italic;
+  opacity: 0.5;
+}
+
 .countries__all {
   width: 100%;
   height: calc(100% - 30px);
@@ -211,6 +251,7 @@
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #4E637E #DCDCDC;
+  position: relative;
 }
 
 .countries__all::-webkit-scrollbar {
@@ -290,7 +331,7 @@
   font-weight: 300;
 }
 
-.countries__all-loading {
+.countries__all .no-matches {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -305,6 +346,7 @@
   font-size: 1.5rem;
   font-family: 'Lato', sans-serif;
   color: #4E637E;
+  position: absolute;
 }
 
 .selected__country {
@@ -735,6 +777,40 @@
   padding-left: 1rem;
   background-color: transparent;
   cursor: pointer;
+}
+
+.info-bottom--converter .converter__calc label[for="amount"] input::-webkit-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /* Firefox */
+  opacity: 0.5;
+}
+
+.info-bottom--converter .converter__calc label[for="amount"] input:-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /* Firefox */
+  opacity: 0.5;
+}
+
+.info-bottom--converter .converter__calc label[for="amount"] input::-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /* Firefox */
+  opacity: 0.5;
+}
+
+.info-bottom--converter .converter__calc label[for="amount"] input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /* Firefox */
+  opacity: 0.5;
+}
+
+.info-bottom--converter .converter__calc label[for="amount"] input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  opacity: 0.5;
+}
+
+.info-bottom--converter .converter__calc label[for="amount"] input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  opacity: 0.5;
 }
 
 .info-bottom--converter .converter__calc label[for="amount"] input:focus {

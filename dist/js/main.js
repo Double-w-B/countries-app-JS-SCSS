@@ -21,6 +21,7 @@ aboutBtn();
 
 const countriesCont = $(".countries__container");
 const allCountries = $(".countries__all");
+const formElement = $(".countries__container-search form");
 const inputSearch = $("#search");
 
 localStorage.getItem("allCountries") === null
@@ -28,6 +29,10 @@ localStorage.getItem("allCountries") === null
   : showAllCountries();
 
 homePageFunc();
+
+formElement.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 
 logo.addEventListener("click", () => {
   header.classList.remove("opacity");

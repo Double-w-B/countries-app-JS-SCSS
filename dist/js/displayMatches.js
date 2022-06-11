@@ -2,6 +2,7 @@ import { countriesData } from "./main.js";
 import { handleSelectedCountry } from "./handleSelectedCountry.js";
 
 const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 
 const findMatches = (wordToMatch, countriesData) => {
   return countriesData.filter((country) => {
@@ -15,19 +16,25 @@ export const displayMatches = () => {
   const inputSearch = $("#search");
   const [data] = countriesData;
 
-  const matchArray = findMatches(inputSearch.value, data);
+  const matchArray = findMatches(inputSearch.value.trim(), data);
   const matchCountry = matchArray
     .map((country) => {
       const {
         flags: { png },
         name: { common },
       } = country;
+
+      const spinnerIcon = "./icons/spinner.gif";
+
       return `
      <div class="countries__single">
             <div class="countries__single-flag">
-              <img src="${png}" 
+              <img src="${spinnerIcon}" 
+           data-src="${png}"
+
               alt="${common} flag image which leads to country information" 
-              class="shadow" />
+              class="shadow" 
+              />
             </div>
               <p ${
                 common.length > 28
@@ -39,6 +46,34 @@ export const displayMatches = () => {
     })
     .join("");
 
-  allCountries.innerHTML = matchCountry;
-  $(".countries__all").addEventListener("click", handleSelectedCountry);
+  allCountries.innerHTML = matchCountry || "<p class='no-matches'>No matches found for your search</p>";
+ 
+
+  allCountries.scrollTo(0, 0);
+
+  const checkImgPosition = (img) => {
+    if (img.getBoundingClientRect().bottom < 860) {
+      setTimeout(() => {
+        img.firstElementChild.firstElementChild.src =
+          img.firstElementChild.firstElementChild.dataset.src;
+      }, 1000);
+    }
+  };
+
+  $$(".countries__single").forEach((img) => {
+    checkImgPosition(img);
+  });
+  allCountries.addEventListener("scroll", () => {
+    $$(".countries__single").forEach((img) => {
+      checkImgPosition(img);
+    });
+  });
+
+  allCountries.addEventListener("resize", () => {
+    $$(".countries__single").forEach((img) => {
+      checkImgPosition(img);
+    });
+  });
+
+  allCountries.addEventListener("click", handleSelectedCountry);
 };

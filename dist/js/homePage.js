@@ -1,8 +1,6 @@
 import { mainContainer } from "./main.js";
 
 const homePage = () => {
-
-
   mainContainer.innerHTML = `
       <div class="greeting">
         <p>
@@ -21,17 +19,15 @@ const homePage = () => {
               type="text"
               name="search"
               id="search"
-              placeholder="I want to visit ..."
+              placeholder="country name ..."
               onfocus="this.placeholder=''"
-              onblur="this.placeholder='I want to visit ...'"
+              onblur="this.placeholder='country name ...'"
+              autocomplete="off"
             />
           </form>
         </div>
         
-        <div class="countries__all">
-        <div class="countries__all-loading">Loading ...</div>
-        
-        </div>
+        <div class="countries__all"></div>
       </div>
 `;
 };

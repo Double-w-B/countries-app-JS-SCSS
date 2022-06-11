@@ -88,6 +88,21 @@
                 padding-left: 1rem;
                 background-color: transparent;
                 cursor: pointer;
+                   &::placeholder {
+                       /* Chrome, Firefox, Opera, Safari 10.1+ */
+                       /* Firefox */
+                       opacity: 0.5;
+                   }
+
+                   &:-ms-input-placeholder {
+                       /* Internet Explorer 10-11 */
+                       opacity: 0.5;
+                   }
+
+                   &::-ms-input-placeholder {
+                       /* Microsoft Edge */
+                       opacity: 0.5;
+                   }
 
                 &:focus {
                     border: 1px solid $link-clr;

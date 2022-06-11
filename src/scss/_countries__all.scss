@@ -8,6 +8,7 @@
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: $header-clr #DCDCDC;
+    position: relative;
 
     &::-webkit-scrollbar {
         width: 12px;
@@ -74,7 +75,7 @@
 
     }
 
-    &-loading {
+    .no-matches {
         width: 100%;
         height: 100%;
         display: flex;
@@ -84,5 +85,7 @@
         font-family: 'Lato',
             sans-serif;
         color: $header-clr;
+        position: absolute;
     }
+
 }

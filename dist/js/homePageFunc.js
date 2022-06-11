@@ -15,18 +15,13 @@ const homePageFunc = () => {
   inputSearch.addEventListener("click", () =>
     countriesCont.classList.add("active")
   );
-  inputSearch.addEventListener("change", displayMatches);
+  
   inputSearch.addEventListener("keyup", displayMatches);
 
   countriesCont.addEventListener(
     "mouseover",
     () => window.innerWidth > 992 && countriesCont.classList.add("hover")
   );
-  countriesCont.addEventListener("click", (e) => {
-    !e.target.closest("#search") &&
-      !e.target.closest(".countries__single") &&
-      countriesCont.classList.remove("active");
-  });
 
   $("main").addEventListener("click", (e) => {
     if (!e.target.closest(".countries__container")) {

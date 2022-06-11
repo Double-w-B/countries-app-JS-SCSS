@@ -42,6 +42,25 @@
                 border-radius: 0.5rem;
                 color: $header-clr;
                 background-color: transparent;
+
+                &::placeholder {
+                    /* Chrome, Firefox, Opera, Safari 10.1+ */
+                    /* Firefox */
+                    font-style: italic;
+                    opacity: 0.5;
+                }
+
+                &:-ms-input-placeholder {
+                    /* Internet Explorer 10-11 */
+                    font-style: italic;
+                    opacity: 0.5;
+                }
+
+                &::-ms-input-placeholder {
+                    /* Microsoft Edge */
+                    font-style: italic;
+                    opacity: 0.5;
+                }
             }
         }
     }

@@ -8,33 +8,36 @@ const $ = document.querySelector.bind(document);
 export const handleSelectedCountry = (e) => {
   let selectedCountryName;
 
+  const setCountryName = (selectedCountryName) => {
+    fetchImages(selectedCountryName);
+    localStorage.setItem(
+      "selectedCountryName",
+      JSON.stringify(selectedCountryName.split(" ").join("_"))
+    );
+
+    mainContainer.innerHTML = "";
+
+    window.history.pushState(
+      selectedCountryName,
+      "",
+      `/countries/${selectedCountryName?.split(" ").join("_")}`
+    );
+
+    $(".nav").innerHTML = "";
+
+    setTimeout(() => {
+      selectedCountry(selectedCountryName);
+      $(".nav").innerHTML = `<p>Hide</p>`;
+      hideBtnHandle();
+    }, 1000);
+  };
+
   if (e.target.closest(".countries__single")) {
     selectedCountryName = e.target.closest(".countries__single").innerText;
-    fetchImages(selectedCountryName);
+    setCountryName(selectedCountryName);
   }
   if (e.target.closest(".country__border")) {
     selectedCountryName = e.target.closest(".country__border").innerText;
-    fetchImages(selectedCountryName);
+    setCountryName(selectedCountryName);
   }
-
-  localStorage.setItem(
-    "selectedCountryName",
-    JSON.stringify(selectedCountryName.split(" ").join("_"))
-  );
-
-  mainContainer.innerHTML = "";
-
-  window.history.pushState(
-    selectedCountryName,
-    "",
-    `/countries/${selectedCountryName.split(" ").join("_")}`
-  );
-
-  $(".nav").innerHTML = "";
-
-  setTimeout(() => {
-    selectedCountry(selectedCountryName);
-    $(".nav").innerHTML = `<p>Hide</p>`;
-    hideBtnHandle();
-  }, 1000);
 };
