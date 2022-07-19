@@ -1,7 +1,4 @@
-const currencyExUrl =
-  `https://api.getgeoapi.com/v2/currency/convert?api_key=${config.CURR_API_KEY}`;
-
-//   &from=EUR&to=PLN&amount=100&format=json";
+const currencyExUrl = `https://api.getgeoapi.com/v2/currency/convert?api_key=${config.CURR_API_KEY}`;
 
 const fetchCurrency = async (f, t, a) => {
   let from = `&from=${f}`,
